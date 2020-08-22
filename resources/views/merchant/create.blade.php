@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="item_price" class="col-md-4 col-form-label text-md-right">Price Value (&#x20B1;):</label>
+                            <label for="item_price" class="col-md-4 col-form-label text-md-right">Package Value (&#x20B1;):</label>
 
                             <div class="col-md-6">
                                 <input id="item_price" type="number" step="0.01" class="form-control" name="item_price" placeholder="Pesos" required >
@@ -42,28 +42,11 @@
                             <label for="item_weight" class="col-md-4 col-form-label text-md-right">Weight (Kg):</label>
 
                             <div class="col-md-6">
-                                <input id="item_weight" type="number" step="0.01" class="form-control" name="item_weight" placeholder="Kg" required >
+                                <input id="item_weight" type="number" step="0.01" class="form-control" name="item_weight" value="0.00" placeholder="Kg" required >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="item_payment_method" class="col-md-4 col-form-label text-md-right">Payment Method:</label>
-
-                            <div class="col-md-6">
-                                <select name="item_payment_method" id="item_PayMethd" class="form-control" >
-                                    <option value="COD-Cash on Deliver" selected>Cash on Deliver</option>
-                                    <option value="NCOD-Non-Cash on Deliver" >Non-Cash on Deliver</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="item_cod_ammount" class="col-md-4 col-form-label text-md-right">COD Ammount (&#x20B1;):</label>
-
-                            <div class="col-md-6">
-                                <input id="item_cod_ammount" type="number" step="0.01" class="form-control" name="item_cod_ammount" placeholder="Pesos" required >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="item_shipping_type" class="col-md-4 col-form-label text-md-right">Shipping Type:</label>
+                            <label for="item_shipping_type" class="col-md-4 col-form-label text-md-right">Shipping Fee:</label>
 
                             <div class="col-md-6">
                                 <select name="item_shipping_type" id="item_ShpTyp" class="form-control" >
@@ -71,6 +54,38 @@
                                 <option value="MP-Merchant payment" >Merchant payment</option>
                                 <option value="CODD-COD deduction" >COD deduction</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="item_payment_method" class="col-md-4 col-form-label text-md-right">Payment Method:</label>
+
+                            <div class="col-md-6">
+                                <select name="item_payment_method" id="item_PayMethd" class="form-control" onchange="showCODAmmountBox(this)">
+                                    <option value="COD-Cash on Deliver" selected>Cash on Deliver</option>
+                                    <option value="NCOD-Non-Cash on Deliver" >Non-Cash on Deliver</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="codammount">
+                            <label for="item_cod_ammount" class="col-md-4 col-form-label text-md-right">COD Ammount (&#x20B1;):</label>
+
+                            <div class="col-md-6">
+                                <input id="item_cod_ammount" type="number" step="0.01" class="form-control" value="0" name="item_cod_ammount" placeholder="Pesos" >
+                            </div>
+                        </div>
+                        <h4>Total</h4>
+                        <div class="form-group row">
+                            <label for="item_valuation_fee" class="col-md-4 col-form-label text-md-right">Valuation Fee (&#x20B1;):</label>
+
+                            <div class="col-md-6">
+                                <input id="item_valuation_fee" type="number" step="0.01" class="form-control" name="item_valuation_fee" placeholder="Pesos" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="item_total_payment" class="col-md-4 col-form-label text-md-right">Total Payment (&#x20B1;):</label>
+
+                            <div class="col-md-6">
+                                <input id="item_total_payment" type="number" step="0.01" class="form-control" name="item_total_payment" placeholder="Pesos" readonly>
                             </div>
                         </div>
                         <hr>
@@ -148,5 +163,38 @@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+function showCODAmmountBox(selectObject){
+    
+    var value = selectObject.value.split("-");
+    var codID = value[0];
+    var codDesc = value[1];
+    // alert("id:"+codID+"| Description:"+codDesc);
+
+    if ($("#item_price").val().length == 0) {
+        // alert("Package value required!");
+        $('#item_price').css({backgroundColor:'#ff9999'});
+    }
+    
+    if(codID === "NCOD"){
+        $("#codammount").hide();
+    }else{
+        $("#codammount").show();
+    }
+
+    var packagevalue = $("#item_price").val();
+    var codammount = $("#item_cod_ammount").val();
+    
+    var valuationfee = packagevalue * 0.01;
+    $("#item_valuation_fee").val(valuationfee);
+    
+    // alert(packagevalue +","+codammount+","+valuationfee);
+    var totalpayment = valuationfee + codammount + packagevalue;
+    $("#item_total_payment").val(totalpayment);
+
+
+};
+</script>
 
 @endsection
