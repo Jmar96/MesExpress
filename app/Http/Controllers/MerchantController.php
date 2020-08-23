@@ -54,6 +54,8 @@ class MerchantController extends Controller
     public function parcels(){
         //with sorting
         
+        ParcelTracker::where('item_status_id', NULL)->update(['item_status_id' => 1]);
+        
         // $parcels = ParcelTracker::where('item_merchant_id',Auth::id())->orderBy('cancelled','desc')->get();
         $parcels = ParcelTracker::select('parcel_trackers.*','parcel_status_lists.item_status')
         ->where('item_merchant_id',Auth::id())
@@ -71,6 +73,9 @@ class MerchantController extends Controller
     }
     public function store(ParcelTrackerCreateRequest $request){
         ParcelTracker::create($request->all());
+
+        ParcelTracker::where('item_status_id', NULL)->update(['item_status_id' => 1]);
+        
         return redirect()->back()->with('success','Created Successfully!');
     }
     public function details(ParcelTracker $parcel){

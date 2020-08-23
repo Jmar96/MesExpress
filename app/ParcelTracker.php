@@ -16,6 +16,8 @@ class ParcelTracker extends Model
         'item_payment_method',
         'item_cod_ammount',
         'item_shipping_type',
+        'item_valuation_fee',
+        'item_total_payment',
         'item_description',
         'item_consignee_fullname',
         'item_consignee_bankaccount',

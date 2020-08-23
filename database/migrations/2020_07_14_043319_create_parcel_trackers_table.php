@@ -22,6 +22,8 @@ class CreateParcelTrackersTable extends Migration
             $table->string('item_payment_method')->nullable();
             $table->decimal('item_cod_ammount',9,2);
             $table->string('item_shipping_type')->nullable();
+            $table->decimal('item_valuation_fee',9,2);
+            $table->decimal('item_total_payment',9,2);
             $table->string('item_description')->nullable();
             $table->string('item_consignee_fullname');
             $table->string('item_consignee_bankaccount')->nullable();
@@ -35,7 +37,7 @@ class CreateParcelTrackersTable extends Migration
             $table->string('item_sender_notes')->nullable();
 
             $table->integer('item_merchant_id');
-            $table->string('item_status_id')->nullable();
+            $table->string('item_status_id')->nullable()->default("1");
             $table->boolean('cancelled')->default(false);
             $table->boolean('completed')->default(false);
             $table->string('item_image')->nullable();

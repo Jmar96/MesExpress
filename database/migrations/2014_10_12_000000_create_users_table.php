@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('user_type')->default("merchant");
             $table->boolean('account_active')->default(true);
             $table->integer('user_level')->nullable()->unsigned()->default('1');
+            $table->string('current_address')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

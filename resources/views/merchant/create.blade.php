@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layout01')
 
 @section('content')
 
@@ -6,11 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('ADD PARCEL') }}</div>
+                <div class="card-header">{{ __('ADD NEW PARCEL') }}</div>
                 <div class="card-body">
-                    <a href="/merchant_parcels" class="btn btn-primary">Go back...</a>
                     <x-alert>
-                    <hr>
                         <h3>System message:</h3>
                     </x-alert> 
                     <hr>
@@ -165,36 +163,52 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-function showCODAmmountBox(selectObject){
-    
-    var value = selectObject.value.split("-");
-    var codID = value[0];
-    var codDesc = value[1];
-    // alert("id:"+codID+"| Description:"+codDesc);
+    function showCODAmmountBox(selectObject){
+        
+        var value = selectObject.value.split("-");
+        var codID = value[0];
+        var codDesc = value[1];
+        // alert("id:"+codID+"| Description:"+codDesc);
 
-    if ($("#item_price").val().length == 0) {
-        // alert("Package value required!");
-        $('#item_price').css({backgroundColor:'#ff9999'});
-    }
-    
-    if(codID === "NCOD"){
-        $("#codammount").hide();
-    }else{
-        $("#codammount").show();
-    }
+        //filtering shipping fee/type
+        if ($("#item_price").val().length == 0) {
+            // alert("Package value required!");
+            $('#item_price').css({backgroundColor:'#ff8c66'});
+        }
+        
+        if(codID === "NCOD"){
+            $("#codammount").hide();
+            $("#item_cod_ammount").val("0");
+        }else{
+            $("#codammount").show();
+        }
 
-    var packagevalue = $("#item_price").val();
-    var codammount = $("#item_cod_ammount").val();
-    
-    var valuationfee = packagevalue * 0.01;
-    $("#item_valuation_fee").val(valuationfee);
-    
-    // alert(packagevalue +","+codammount+","+valuationfee);
-    var totalpayment = valuationfee + codammount + packagevalue;
-    $("#item_total_payment").val(totalpayment);
+        //computing total payment
+        var packagevalue = parseFloat($("#item_price").val());
+        var codammount = parseFloat($("#item_cod_ammount").val());
+        
+        var valuationfee = packagevalue * 0.01;
+        $("#item_valuation_fee").val(valuationfee);
+        
+        // alert("PG:"+packagevalue +",CA:"+codammount+",VF:"+valuationfee);
+        var totalpayment = (packagevalue + codammount) + valuationfee;
+        $("#item_total_payment").val(totalpayment);
 
 
-};
+    };
+    $("#item_cod_ammount").on("change paste keyup", function() {
+        // alert($(this).val()); 
+        //computing total payment
+        var packagevalue = parseFloat($("#item_price").val());
+        var codammount = parseFloat($("#item_cod_ammount").val());
+        
+        var valuationfee = packagevalue * 0.01;
+        $("#item_valuation_fee").val(valuationfee);
+        
+        // alert("PG:"+packagevalue +",CA:"+codammount+",VF:"+valuationfee);
+        var totalpayment = (packagevalue + codammount) + valuationfee;
+        $("#item_total_payment").val(totalpayment);
+    });
 </script>
 
 @endsection

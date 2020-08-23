@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layout01')
 
 @section('content')
 <div class="container">
@@ -21,22 +21,45 @@
                     <x-alert>
                         <p>Uploading message:</p>
                     </x-alert> 
+                    @if(Auth::user()->avatar)
+                        <img src="{{asset('/storage/'.Auth::user()->id.'_images/'.Auth::user()->avatar)}}" alt="avatar" width="30"/>
+                    @endif
                     <hr>
-                    <form action="/mupload" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <input type="file" name="image"/>
-                        <input type="submit" value="Upload"/>
-                    </form>
-                    <br>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <form action="/mupload" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="image"/>
+                                <input type="submit" value="Upload"/>
+                            </form>
+                        </div>
+                    </div>
                     <hr>
                     @foreach($user as $user)
-                        <p>{{$user->name}}</p>
-                        <p>{{$user->email}}</p>
-                        <p>{{$user->phone_number}}</p>
-                        <p>{{$user->merchant_online_name}}</p>
-                        <input type='button' value="edit" disable/>
-                        <a href="/merchant" class="btn btn-warning">home</a>
-                        <!-- <a href="{{'/user/'.$user->id.'/edit'}}" class="btn btn-warning">Edit Details</a> -->
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{$user->name}}" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{$user->email}}" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Mobile No.</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{$user->phone_number}}" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Address</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{$user->current_address}}" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Bank Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{$user->bank_name}}" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Bank</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{$user->bank_account_number}}" placeholder="Enter email">
+                    </div>
                     @endforeach
                 </div>
                 <div class="card-footer">

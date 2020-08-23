@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layout02')
 
 @section('content')
 
@@ -128,8 +128,6 @@
                 <div class="card-header">{{ __('List of Users') }}</div>
                 <div class="card-body">
                     
-                    <a href="/admin" class="btn btn-primary">Home</a>
-                    <hr>
                     <div class="table-wrapper">
                         <table class="fl-table">
                             <thead>

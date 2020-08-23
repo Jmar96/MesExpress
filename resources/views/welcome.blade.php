@@ -80,6 +80,8 @@
             @endif
 
             <div class="content">
+                <img src="../../dist/img/MESXlogo.png" alt="MES Express" style="opacity: .8">
+                <!-- <br> -->
                 <div class="title m-b-md">
                     M.E.S. Express
                 </div>

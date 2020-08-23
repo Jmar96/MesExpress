@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layout01')
 
 @section('content')
 
@@ -9,9 +9,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    @foreach($user as $user)
-                        <h5>Welcome merchant {{$user->name}}!</h5>
-                    @endforeach
+                    DASHBOARD
                 </div>
                 <div class="card-body">
                     <!-- Small boxes (Stat box) -->
@@ -79,18 +77,6 @@
                     </div>
                     <div class="row">
                     <br>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-md-3 col-3">
-                                <h5>Go to</h5>
-                            </div>
-                            <div class="col-md-9 col-9">
-                                <a href="/mprofile" class="btn btn-warning">Profile</a>
-                                <a href="/merchant/create" class="btn btn-primary">New Parcel</a>
-                                <a href="/merchant_parcels" class="btn btn-primary">Track Parcels</a>
-                            </div>
-                        </div>
                     </div>
                 </div>  
                 <div class="card-footer">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layout01')
 
 @section('content')
 
@@ -8,7 +8,6 @@
             <div class="card">
                 <div class="card-header">{{ __('Parcel Details') }}</div>
                 <div class="card-body">
-                    <a href="/merchant_parcels/" class="btn btn-primary">Go back</a>
                     <x-alert>
                     <hr>
                         <h3>System message:</h3>
