@@ -74,7 +74,7 @@ class User extends Authenticatable implements MustVerifyEmail
         (new self())->deleteOldIcon();
 
         $image->storeAs('images',$filename,'public');
-        auth()->user()->update(['avatar'=> $filename]);
+        // auth()->user()->update(['avatar'=> $filename]);
     }
     
     protected function deleteOldIcon(){
