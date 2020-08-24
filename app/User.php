@@ -65,4 +65,23 @@ class User extends Authenticatable implements MustVerifyEmail
             Storage::delete('/public/'.$id.'_images/'.auth()->user()->avatar);
         }
     }
+
+    
+    public static function uploadMIcon($image){
+        $id = Auth::id();
+        $filename = $image->getClientOriginalName();
+        
+        (new self())->deleteOldIcon();
+
+        $image->storeAs('images',$filename,'public');
+        auth()->user()->update(['avatar'=> $filename]);
+    }
+    
+    protected function deleteOldIcon(){
+        $id = Auth::id();
+        if(auth()->user()->avatar){
+            // dd('/public/images/'.auth()->user()->avatar);
+            Storage::delete('/public/'.'images/'.auth()->user()->avatar);
+        }
+    }
 }

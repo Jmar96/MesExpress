@@ -54,6 +54,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
 Route::get('/admin', 'AdminController@index')->name('admin.index');
 Route::post('/aupload','AdminController@uploadMAvatar');
+Route::post('/auploadicon','AdminController@uploadMesIcon');
 Route::get('/aprofile', 'AdminController@profile')->name('admin.profile');
 Route::get('/userlists', 'AdminController@users')->name('admin.users');
 Route::post('/updateUserType', 'AdminController@updateUserType');

@@ -25,7 +25,7 @@
                         <img src="{{asset('/storage/'.Auth::user()->id.'_images/'.Auth::user()->avatar)}}" alt="avatar" width="30"/>
                     @endif
                     <hr>
-                    <div class="form-group row">
+                    <div class="form-group">
                         <div class="col-md-6">
                             <form action="/aupload" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -61,6 +61,17 @@
                         <input type="text" class="form-control" id="exampleInputEmail1" value="{{$user->bank_account_number}}" placeholder="Enter email">
                     </div>
                     @endforeach
+                    <hr>
+                    <h5>Upload Icon for Welcome page</h5>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <form action="/auploadicon" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="image"/>
+                                <input type="submit" value="Upload"/>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                 </div>

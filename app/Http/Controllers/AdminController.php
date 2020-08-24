@@ -51,6 +51,17 @@ class AdminController extends Controller
         }
         return redirect()->back()->with('error','Upload failed!'); //use with to pass message instead of flash session
     }
+    function uploadMesIcon(Request $request){
+        if($request->hasFile('image')){
+            
+            //go to User.php and run the function
+            User::uploadMIcon($request->image);
+            
+            $request->session()->flash('success','Image uploaded!');
+            return redirect()->back();
+        }
+        return redirect()->back()->with('error','Upload failed!'); //use with to pass message instead of flash session
+    }
     
     public function users(){
         $users = User::orderBy('id')->get();
