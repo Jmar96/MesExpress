@@ -12,7 +12,9 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                /*background-color: #ffb604;    #fff    */
+                background-color: #ffb604; /* For browsers that do not support gradients */
+                background-image: linear-gradient(90deg, #ffb604, #ffe299); /* Standard syntax (must be last) */
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -80,7 +82,7 @@
             @endif
 
             <div class="content">
-                <img src="../../dist/img/MESXlogo.png" alt="MES Express" style="opacity: .8">
+                <img src="{{ asset('/storage/images/MESXlogo.png') }}" alt="MES Express" style="opacity: .8">
                 <!-- <br> -->
                 <div class="title m-b-md">
                     M.E.S. Express

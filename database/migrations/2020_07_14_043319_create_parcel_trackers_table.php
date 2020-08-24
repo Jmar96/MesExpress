@@ -41,6 +41,24 @@ class CreateParcelTrackersTable extends Migration
             $table->boolean('cancelled')->default(false);
             $table->boolean('completed')->default(false);
             $table->string('item_image')->nullable();
+
+            $table->integer('item_int01')->nullable()->unsigned()->default('0');
+            $table->integer('item_int02')->nullable()->unsigned()->default('0');
+            $table->integer('item_int03')->nullable()->unsigned()->default('0');
+            $table->integer('item_int04')->nullable()->unsigned()->default('0');
+            $table->integer('item_int05')->nullable()->unsigned()->default('0');
+            $table->integer('item_int06')->nullable()->unsigned()->default('0');
+            $table->string('item_string01')->nullable();
+            $table->string('item_string02')->nullable();
+            $table->string('item_string03')->nullable();
+            $table->string('item_string04')->nullable();
+            $table->string('item_string05')->nullable();
+            $table->string('item_string06')->nullable();
+            $table->string('item_string07')->nullable();
+            $table->string('item_string08')->nullable();
+            $table->string('item_string09')->nullable();
+            $table->string('item_string10')->nullable();
+
             $table->timestamps();
         });
     }

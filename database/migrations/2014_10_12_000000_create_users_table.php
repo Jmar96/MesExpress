@@ -28,6 +28,24 @@ class CreateUsersTable extends Migration
             $table->boolean('account_active')->default(true);
             $table->integer('user_level')->nullable()->unsigned()->default('1');
             $table->string('current_address')->nullable();
+            
+            $table->integer('user_int01')->nullable()->unsigned()->default('0');
+            $table->integer('user_int02')->nullable()->unsigned()->default('0');
+            $table->integer('user_int03')->nullable()->unsigned()->default('0');
+            $table->integer('user_int04')->nullable()->unsigned()->default('0');
+            $table->integer('user_int05')->nullable()->unsigned()->default('0');
+            $table->integer('user_int06')->nullable()->unsigned()->default('0');
+            $table->string('user_string01')->nullable();
+            $table->string('user_string02')->nullable();
+            $table->string('user_string03')->nullable();
+            $table->string('user_string04')->nullable();
+            $table->string('user_string05')->nullable();
+            $table->string('user_string06')->nullable();
+            $table->string('user_string07')->nullable();
+            $table->string('user_string08')->nullable();
+            $table->string('user_string09')->nullable();
+            $table->string('user_string10')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

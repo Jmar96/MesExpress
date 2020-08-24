@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
     <!-- favicon -->
-    <link rel="shortcut icon" href="../../dist/img/MESXlogo.png">
+    <link rel="shortcut icon" href="{{ asset('/storage/images/MESXlogo.png') }}">
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-warning">
     <div class="container">
       <a href="../../index3.html" class="navbar-brand">
-        <img src="../../dist/img/MESXlogo.png" alt="MES Express" class="brand-image img-circle elevation-3"
+        <img src="{{ asset('/storage/images/MESXlogo.png') }}" alt="MES Express" class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="brand-text font-weight-light">MES Express</span>
       </a>
@@ -66,12 +66,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li><a href="/merchant/create" class="dropdown-item">Contacts</a></li>
               <li><a href="/merchant_parcels" class="dropdown-item">Mission & Vision</a></li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
           </li>
         </ul>
 
@@ -127,6 +121,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="nav-item">
           <!-- <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
               class="fas fa-th-large"></i></a> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }} </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
         </li>
       </ul>
     </div>
