@@ -82,7 +82,7 @@
             @endif
 
             <div class="content">
-                <img src="{{ asset('/storage/app/public/images/MESXlogo.png') }}" alt="MES Express" style="opacity: .8">
+                <img src="{{ Storage::url('images/MESXlogo.png') }}" alt="MES Express" style="opacity: .8">
                 <!-- <br> -->
                 <div class="title m-b-md">
                     M.E.S. Express
