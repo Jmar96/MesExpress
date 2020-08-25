@@ -195,14 +195,14 @@ function userTypeChange(selectObject){
             user_id: userID,
             type_id: typesID
         },
-        // cache: false,
-        success: function(dataResult){
-            if(response.success){
-                  alert(response.message) //Message come from controller
-              }else{
-                  alert("Error")
-              }
-        }
+        cache: false //,
+        // success: function(dataResult){
+        //     if(response.success){
+        //           alert(response.message) //Message come from controller
+        //       }else{
+        //           alert("Error")
+        //       }
+        // }
     });
     // */
 };

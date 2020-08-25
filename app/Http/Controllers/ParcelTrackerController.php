@@ -6,6 +6,7 @@ use App\Http\Requests\ParcelTrackerCreateRequest;
 use App\ParcelTracker;
 use App\ParcelStatusList;
 use App\ParcelHistory;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,15 +22,17 @@ class ParcelTrackerController extends Controller
         //with sorting
         
         // $parcels = ParcelTracker::where('item_merchant_id',Auth::id())->orderBy('cancelled','desc')->get();
-        $parcels = ParcelTracker::select('parcel_trackers.*','parcel_status_lists.item_status','users.name')
+        $parcels = ParcelTracker::select('parcel_trackers.*','parcel_status_lists.item_status','merchant.name as merchantname','rider.name as ridername')
         // ->where('item_merchant_id',Auth::id())
         ->leftJoin('parcel_status_lists', 'parcel_trackers.item_status_id', '=', 'parcel_status_lists.id')
-        ->leftJoin('users', 'parcel_trackers.item_merchant_id', '=', 'users.id')
+        ->leftJoin('users as merchant', 'parcel_trackers.item_merchant_id', '=', 'merchant.id')
+        ->leftJoin('users as rider', 'parcel_trackers.item_rider_id', '=', 'rider.id')
         ->get();
         
         $ddpstatus = ParcelStatusList::orderBy('id')->get();
+        $ddpriders = User::where('user_type','=','rider')->orderBy('name')->get();
 
-        return view('parceltracker.index', compact('parcels','ddpstatus'));
+        return view('parceltracker.index', compact('parcels','ddpstatus','ddpriders'));
     }
     public function create(){
         return view('parceltracker.create');
@@ -75,10 +78,21 @@ class ParcelTrackerController extends Controller
         $phistories = ParcelHistory::select('parcel_histories.*','parcel_trackers.item_name','parcel_status_lists.item_status','parcel_status_lists.item_status_description')
         ->leftJoin('parcel_trackers','parcel_histories.parcel_id','=','parcel_trackers.id')
         ->leftJoin('parcel_status_lists','parcel_histories.status_id','=','parcel_status_lists.id')
-        ->where([['parcel_histories.merchant_id', Auth::id()],['parcel_histories.parcel_id', '=', $id]])
+        //->where([['parcel_histories.merchant_id', Auth::id()],['parcel_histories.parcel_id', '=', $id]])
+        ->where('parcel_histories.parcel_id', '=', $id)
         ->orderBy('id','desc')->get();
 
         return view('parceltracker.showHist', compact('phistories'));
         
+    }
+    
+    public function updateItemRider(Request $request){
+        $pID = $request->input('parcel_id');
+        $rName = $request->input('rider_name');
+        $rID = $request->input('rider_id');
+
+        ParcelTracker::where('id', $pID)->update(['item_rider_id' => $rID]);
+
+        return redirect()->back()->with('success','Created Successfully!');
     }
 }

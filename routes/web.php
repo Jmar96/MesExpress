@@ -49,6 +49,15 @@ Route::get('/merchant/create', 'MerchantController@create');
 Route::post('/merchant/create', 'MerchantController@store');
 Route::get('/merchantparcel/{parcel}/details', 'MerchantController@details');
 });
+////////rider//////////
+Route::group(['middleware' => 'App\Http\Middleware\RiderMiddleware'], function()
+{
+Route::get('/rider', 'RiderController@index')->name('rider.index');
+Route::post('/rupload','RiderController@uploadMAvatar');
+Route::get('/rprofile', 'RiderController@profile')->name('rider.profile');
+Route::get('/rider_parcels', 'RiderController@parcels')->name('rider.parcels');
+Route::get('/rider/{parcel}/details', 'RiderController@details');
+});
 ////////admin//////////
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
@@ -69,6 +78,8 @@ Route::put('/parceltracker/{parcel}/ycancelled', 'ParcelTrackerController@ycance
 Route::put('/parceltracker/{parcel}/ncancelled', 'ParcelTrackerController@ncancelled')->name('parceltracker.ncancelled');
 Route::put('/parceltracker/{parcel}/ycompleted', 'ParcelTrackerController@ycompleted')->name('parceltracker.ycompleted');
 Route::put('/parceltracker/{parcel}/ncompleted', 'ParcelTrackerController@ncompleted')->name('parceltracker.ncompleted');
+
+Route::post('/updateItemRider', 'ParcelTrackerController@updateItemRider');
 
 ////////parcel status list/////////
 Route::get('/parcelstatuslist', 'ParcelStatusListController@index')->name('parcelstatuslist.index');

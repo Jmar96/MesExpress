@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>MES Express | Admin</title>
+  <title>MES Express | Rider</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -47,25 +47,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="/admin" class="nav-link">Home</a>
+            <a href="/rider" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
-            <a href="/aprofile" class="nav-link">Profile</a>
+            <a href="/rprofile" class="nav-link">Profile</a>
           </li>
           <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Go to</a>
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Parcels</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="/parceltracker" class="dropdown-item">Parcels</a></li>
-              <li><a href="/userlists" class="dropdown-item">Users</a></li>
-              <li><a href="/assignriders" class="dropdown-item">Assign Riders</a></li>
-              <li><a href="/parcelstatuslist" class="dropdown-item">Status list</a></li>
+              <li><a href="/rider_parcels" class="dropdown-item">All Parcels</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">About us</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Contacts</a></li>
-              <li><a href="#" class="dropdown-item">Mission & Vision</a></li>
+              <li><a href="/rider/create" class="dropdown-item">Contacts</a></li>
+              <li><a href="/rider_parcels" class="dropdown-item">Mission & Vision</a></li>
             </ul>
           </li>
         </ul>
@@ -89,35 +86,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="fas fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">0</span>
+            <span class="badge badge-danger navbar-badge">3</span>
           </a>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <!-- <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div> -->
+          
         </li>
         <li class="nav-item">
           <!-- <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i

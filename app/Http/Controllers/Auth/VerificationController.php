@@ -43,7 +43,7 @@ class VerificationController extends Controller
                     return '/admin';
                 break;
             case "rider":
-                    return '/merchant';
+                    return '/rider';
                 break;
             case "merchant":
                     return '/merchant';

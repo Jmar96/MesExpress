@@ -21,6 +21,7 @@
                         <th>Valuation Fee</th>
                         <th>COD Fee (&#x20B1;)</th>
                         <th>Total</th>
+                        <th>Rider</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
@@ -30,11 +31,20 @@
                     <tr>
                         <td><p>{{$parcel->item_name}}</p></td>
                         <td><p>{{$parcel->item_reference_number}}</p></td>
-                        <td><p>{{$parcel->name}}</p></td>
+                        <td><p>{{$parcel->merchantname}}</p></td>
                         <td><p>{{$parcel->item_consignee_fullname}}</p></td>
                         <td><p>&#x20B1; {{$parcel->item_valuation_fee}}</p></td>
                         <td><p>&#x20B1; {{$parcel->item_cod_ammount}}</p></td>
                         <td><p>&#x20B1; {{$parcel->item_total_payment}}</p></td>
+                        <td>
+                            <select name="item_rider" id="iRider" onchange="parcelRider(this)">
+                                <option value="" selected disabled>{{$parcel->ridername}}</option>
+                                <option value="{{$parcel->id.'-0-0'}}" >#NA</option>
+                                @foreach($ddpriders as $ddprider)
+                                    <option value="{{$parcel->id.'-'.$ddprider->name.'-'.$ddprider->id}}">{{$ddprider->name}}</option>
+                                @endforeach()
+                            </select>
+                        </td>
                         <td>
                             <select name="item_status" id="iStatus" onchange="parcelHistory(this)">
                                 <option value="" selected disabled>{{$parcel->item_status}}</option>
@@ -114,14 +124,33 @@ $(function () {
                 status_id: dpstatusID,
                 merchant_id: merchantID
             },
-            cache: false,
-            success: function(dataResult){
-                if(response.success){
-                    alert(response.message) //Message come from controller
-                }else{
-                    alert("Error")
-                }
-            }
+            cache: false // ,
+            // success: function(response){
+            //     if(response.success){
+            //         alert(response.message) //Message come from controller
+            //     }else{
+            //         alert("Error")
+            //     }
+            // }
+        });
+    };
+    function parcelRider(selectObject){
+        
+        var value = selectObject.value.split("-");
+        var parcelID = value[0];
+        var ridername = value[1];
+        var riderID = value[2];
+        // alert("parcelID:"+parcelID+"| ridername:"+ridername+"| riderID:"+riderID);
+        $.ajax({
+            url: "/updateItemRider",
+            type: "POST",
+            data: {
+                _token: $("#csrf").val(),
+                parcel_id: parcelID,
+                rider_name: ridername,
+                rider_id: riderID
+            },
+            cache: false 
         });
     };
 </script>
