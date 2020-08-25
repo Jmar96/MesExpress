@@ -37,6 +37,7 @@ class CreateParcelTrackersTable extends Migration
             $table->string('item_sender_notes')->nullable();
 
             $table->integer('item_merchant_id');
+            $table->integer('item_rider_id')->nullable()->unsigned()->default('0');
             $table->string('item_status_id')->nullable()->default("1");
             $table->boolean('cancelled')->default(false);
             $table->boolean('completed')->default(false);

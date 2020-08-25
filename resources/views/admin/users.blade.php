@@ -149,6 +149,7 @@
                                         <select name="type_change" id="uType" onchange="userTypeChange(this)">
                                             <option selected disabled>{{$user->user_type}}</option>
                                             <option value="{{$user->id}}-admin">Admin</option>
+                                            <option value="{{$user->id}}-rider">Rider</option>
                                             <option value="{{$user->id}}-merchant">Merchant</option>
                                         </select>
                                     </td>
