@@ -77,6 +77,11 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success','Created Successfully!');
     }
+    public function assignRider(){
+        $ddpriders = User::where('user_type','=','rider')->orderBy('name')->get();
+        $ddparcels = ParcelTracker::where('item_rider_id','=','0')->orderBy('item_name')->get();
 
+        return view('admin.assignRider', compact('ddpriders','ddparcels'));
+    }
 
 }

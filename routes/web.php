@@ -67,6 +67,7 @@ Route::post('/auploadicon','AdminController@uploadMesIcon');
 Route::get('/aprofile', 'AdminController@profile')->name('admin.profile');
 Route::get('/userlists', 'AdminController@users')->name('admin.users');
 Route::post('/updateUserType', 'AdminController@updateUserType');
+Route::get('/asrider', 'AdminController@assignRider')->name('admin.assignRider');
 
 ////////parcel tracker/////////
 Route::get('/parceltracker', 'ParcelTrackerController@index')->name('parceltracker.index');
