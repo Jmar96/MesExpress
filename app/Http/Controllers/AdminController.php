@@ -83,5 +83,20 @@ class AdminController extends Controller
 
         return view('admin.assignRider', compact('ddpriders','ddparcels'));
     }
+    public function UpdateRider(Request $request){
+        $pID = $request->input('parcel_id');
+        $rID = $request->input('rider_id');
 
+        ParcelTracker::whereIn('id', $request->input('parcel_id'))->update(['item_rider_id' => $rID]);
+
+        return redirect()->back()->with('success','Created Successfully!');
+    }
+    public function RemoveRider(Request $request){
+        $pID = $request->input('parcel_id');
+        $rID = $request->input('rider_id');
+
+        $affected = DB::update("update parcel_trackers set item_rider_id = " + rID + " where id IN (" + pID + ")");
+
+        return redirect()->back()->with('success','Created Successfully!');
+    }
 }

@@ -30,6 +30,7 @@ class ParcelTracker extends Model
         'item_sender_address',
         'item_sender_notes',
         'item_merchant_id',
+        'item_rider_id',
         'item_status_id',
         'cancelled',
         'completed',

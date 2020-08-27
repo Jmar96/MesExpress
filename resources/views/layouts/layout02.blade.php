@@ -24,9 +24,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
-  <!-- Bootstrap4 Duallistbox -->
-  <link rel="stylesheet" href="../../plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-
 
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('/storage/images/MESXlogo.png') }}">
@@ -178,8 +175,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-<!-- Bootstrap4 Duallistbox -->
-<script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
@@ -188,7 +183,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script type="text/javascript">
 
     //Bootstrap Duallistbox
-    $('.duallistbox').bootstrapDualListbox()
+    //$('.duallistbox').bootstrapDualListbox()
 
 </script>
 </body>
