@@ -95,7 +95,7 @@ class AdminController extends Controller
         $pID = $request->input('parcel_id');
         $rID = $request->input('rider_id');
 
-        $affected = DB::update("update parcel_trackers set item_rider_id = " + rID + " where id IN (" + pID + ")");
+        ParcelTracker::whereIn('id', $request->input('parcel_id'))->update(['item_rider_id' => $rID]);
 
         return redirect()->back()->with('success','Created Successfully!');
     }
