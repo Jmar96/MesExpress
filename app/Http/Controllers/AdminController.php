@@ -78,6 +78,8 @@ class AdminController extends Controller
         return redirect()->back()->with('success','Created Successfully!');
     }
     public function assignRider(){
+        ParcelTracker::where('item_rider_id', NULL)->update(['item_rider_id' => 0]);
+
         $ddpriders = User::where('user_type','=','rider')->orderBy('name')->get();
         $ddparcels = ParcelTracker::where('item_rider_id','=','0')->orderBy('item_name')->get();
 
@@ -99,4 +101,18 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success','Created Successfully!');
     }
+    function listboxRidersParcels( Request $request )
+    {
+        //   $this->validate( $request, [ 'id' => 'required|exists:countries,id' ] );
+        // $states = State::where('country_id', $request->get('id') )->get();
+        $lpsrider = ParcelTracker::where('item_rider_id', $request->get('id') )->orderBy('item_name')->get();
+        //you can handle output in different ways, I just use a custom filled array. you may pluck data and directly output your data.
+        $output = [];
+        foreach( $lpsrider as $lprider )
+        {
+            $output[$lprider->id] = $lprider->item_name;
+        }
+        return $output;
+    }
+
 }

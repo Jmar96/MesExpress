@@ -70,8 +70,8 @@ select.form-control[multiple], select.form-control[size] {
                                 </div>
                                 <div class="subject-info-box-2">
                                 <label>Choose Rider : </label>
-                                    <select name="item_rider" id="iRider" style="width: 120px">
-                                        <option value="" selected disabled>Choose Rider</option>
+                                    <select name="item_rider" id="lRider" style="width: 120px" onchange="getRiderParcels(this)">
+                                        <option value="0" >No Rider</option>
                                         @foreach($ddpriders as $ddprider)
                                             <option value="{{$ddprider->id}}">{{$ddprider->name}}</option>
                                         @endforeach()
@@ -99,31 +99,14 @@ select.form-control[multiple], select.form-control[size] {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-function getRiderParcels(rdrid) {
-    // $.ajax({
-    //     type: 'GET',
-    //     url: "/getRidersParcels",
-    //     dataType: 'json',
-    //     data: { rid: rdrid},
-    //     success: function (campaign) {
-    //         $.each(campaign, function (i, campaign) {
-    //             $("#lstBox2").append('<option value="' + campaign.Value + '">' + campaign.Text + '</option>');
-    //         });
-    //     },
-    //     error: function (ex) {
-    //         alert('Failed to retrieve lstBox2 data.' + ex.responseText);
-    //     }
-    // });
-    return false;
-};
-
 //}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 (function () {
 
-var sriderID = $( "#iRider option:selected" ).val();;
 var nsriderID = '0';
 
     $('#btnRight').click(function (e) {
+    var sriderID = $( "#lRider option:selected" ).val();
+
         var selectedOpts = $('#lstBox1 option:selected');
         var rSOval = [];
         if (selectedOpts.length == 0) {
@@ -153,6 +136,8 @@ var nsriderID = '0';
         });
     });
     $('#btnAllRight').click(function (e) {
+    var sriderID = $( "#lRider option:selected" ).val();
+
         var selectedOpts = $('#lstBox1 option');
         var rSOval = [];
         if (selectedOpts.length == 0) {
@@ -264,5 +249,36 @@ var nsriderID = '0';
     });
 }(jQuery));
 //}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
+function getRiderParcels(selectObject) {
+    $("#lstBox2").empty();
+    var value = selectObject.value.split("-");
+    var riderID = value[0];
+    var ridername = value[1];
+    // alert("riderID:"+riderID+"| ridername:"+ridername);
+    if(riderID == 0){
+    }else{
+        $.ajax({
+            url : '{{ route( 'getRidersParcels' ) }}',
+            data: {
+                "_token": $("#csrf").val(),
+                "id": riderID
+            },
+            type: 'post',
+            dataType: 'json',
+            success: function( result )
+            {
+                $.each( result, function(k, v) {
+                    $('#lstBox2').append($('<option>', {value:k, text:v}));
+                });
+            },
+            error: function()
+            {
+                alert('error...');
+            }
+        });
+    }
+    return false;
+};
 </script>
 @endsection

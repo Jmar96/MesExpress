@@ -72,6 +72,8 @@ Route::get('/asrider', 'AdminController@assignRider')->name('admin.assignRider')
 Route::post('/UpdateRider', 'AdminController@UpdateRider');
 Route::post('/RemoveRider', 'AdminController@RemoveRider');
 
+Route::post('/admin/listboxRidersParcels', 'AdminController@listboxRidersParcels')->name('getRidersParcels');
+
 ////////parcel tracker/////////
 Route::get('/parceltracker', 'ParcelTrackerController@index')->name('parceltracker.index');
 Route::get('/parceltracker/create', 'ParcelTrackerController@create');
