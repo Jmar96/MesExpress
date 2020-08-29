@@ -59,7 +59,12 @@ class RiderController extends Controller
         // dd($request->all()); //alert like
         // $parcel->update(['item_name' => $request->item_name]); //one update only
         $parcel->update($request->all());
-        ParcelHistory::create($request->all());
+        
+        $phistory = new ParcelHistory;
+        $phistory->parcel_id = $parcel->id;
+        $phistory->status_id = $parcel->item_status_id;
+        $phistory->merchant_id = $parcel->item_merchant_id;
+        $phistory->save();
 
         return redirect(route('rider.parcels'))->with('success','Updated Successfully!');
     }
