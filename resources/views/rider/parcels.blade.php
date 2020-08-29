@@ -17,11 +17,9 @@
                         <th>Parcel</th>
                         <th>Ref_Number</th>
                         <th>Consignee</th>
-                        <th>Valuation Fee</th>
-                        <th>COD Fee (&#x20B1;)</th>
+                        <th>Address</th>
                         <th>Total</th>
                         <th>Status</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,12 +28,14 @@
                         <td><p>{{$parcel->item_name}}</p></td>
                         <td><p>{{$parcel->item_reference_number}}</p></td>
                         <td><p>{{$parcel->item_consignee_fullname}}</p></td>
-                        <td><p>&#x20B1; {{$parcel->item_valuation_fee}}</p></td>
-                        <td><p>&#x20B1; {{$parcel->item_cod_ammount}}</p></td>
+                        <td><p>{{$parcel->item_consignee_address}}</p></td>
                         <td><p>&#x20B1; {{$parcel->item_total_payment}}</p></td>
-                        <td><p>{{$parcel->item_status}}</p></td>
                         <td>
-                            <a href="{{'/riderparcel/'.$parcel->id.'/details'}}" class="jlink01" title="View details">UPDATE STATUS</a>
+                            @if($parcel->item_status =='Delivered')         
+                                {{$parcel->item_status}} 
+                            @else
+                                {{$parcel->item_status}} | <a href="{{'/rider/'.$parcel->id.'/edit'}}" class="jlink01" title="View Status">UPDATE</a>
+                            @endif
                         </td>
                     </tr>             
                     @endforeach

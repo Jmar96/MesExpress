@@ -95,4 +95,9 @@ class ParcelTrackerController extends Controller
 
         return redirect()->back()->with('success','Created Successfully!');
     }
+
+    public function print01(ParcelTracker $parcel){
+        
+        return view('parceltracker.print01',compact('parcel'));
+    }
 }

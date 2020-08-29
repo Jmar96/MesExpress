@@ -57,6 +57,9 @@ Route::post('/rupload','RiderController@uploadMAvatar');
 Route::get('/rprofile', 'RiderController@profile')->name('rider.profile');
 Route::get('/rider_parcels', 'RiderController@parcels')->name('rider.parcels');
 Route::get('/rider/{parcel}/details', 'RiderController@details');
+
+Route::get('/rider/{parcel}/edit', 'RiderController@edit');
+Route::patch('/rider/{parcel}/update', 'RiderController@update')->name('rider.update');
 });
 ////////admin//////////
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
@@ -86,6 +89,7 @@ Route::put('/parceltracker/{parcel}/ycompleted', 'ParcelTrackerController@ycompl
 Route::put('/parceltracker/{parcel}/ncompleted', 'ParcelTrackerController@ncompleted')->name('parceltracker.ncompleted');
 
 Route::post('/updateItemRider', 'ParcelTrackerController@updateItemRider');
+Route::get('/parceltracker/{parcel}/print01', 'ParcelTrackerController@print01');
 
 ////////parcel status list/////////
 Route::get('/parcelstatuslist', 'ParcelStatusListController@index')->name('parcelstatuslist.index');

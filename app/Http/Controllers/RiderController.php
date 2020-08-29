@@ -48,4 +48,20 @@ class RiderController extends Controller
         return view('rider.parcels', compact('parcels','ddpstatus'));
     }
 
+    
+    public function edit(ParcelTracker $parcel){
+
+        $ddpstatus = ParcelStatusList::where('id', '>=', $parcel->item_status_id)->orderBy('id')->get();
+
+        return view('rider.edit',compact('parcel','ddpstatus'));
+    }
+    public function update(ParcelTrackerCreateRequest $request,ParcelTracker $parcel){
+        // dd($request->all()); //alert like
+        // $parcel->update(['item_name' => $request->item_name]); //one update only
+        $parcel->update($request->all());
+        ParcelHistory::create($request->all());
+
+        return redirect(route('rider.parcels'))->with('success','Updated Successfully!');
+    }
+
 }
