@@ -39,6 +39,7 @@
                             <h6>Contact #: {{$parcel->item_consignee_contactno}}</h4>
                             <h6>Address : {{$parcel->item_consignee_address}}</h6>
                             <hr>
+                            {!! DNS1D::getBarcodeSVG($parcel->item_reference_number, "C39", 3, 100, '#2A3239') !!}
                             <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($parcel->item_reference_number, 'C39+',3,100,array(1,1,1), true) }}" alt="barcode" />
                             <h5>{{$parcel->item_name}}</h5>
                             <h5>&#x20B1; {{$parcel->item_total_payment}}</h5>
