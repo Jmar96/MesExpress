@@ -54,8 +54,9 @@
                             </select>
                         </td>
                         <td>
-                            <a href="{{'/parceltracker/'.$parcel->id.'/edit'}}" class="jlink01" title="EDIT">Details</a> |
-                            <a href="{{'/parceltracker/showHist/'.$parcel->id}}" class="jlink01" title="SHOW HISTORY">History</a>
+                            <a href="{{'/parceltracker/'.$parcel->id.'/edit'}}" class="jlink01" title="EDIT">Details</a>|
+                            <a href="{{'/parceltracker/showHist/'.$parcel->id}}" class="jlink01" title="SHOW HISTORY">History</a>|
+                            <a href="{{'/parceltracker/'.$parcel->id.'/print01'}}" class="jlink01" title="EDIT">Print</a>
                         </td>
                         <!-- <td>
                             @if($parcel->cancelled)
