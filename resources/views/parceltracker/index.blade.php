@@ -15,8 +15,6 @@
                     <thead>
                     <tr>
                         <th>Parcel</th>
-                        <th>Ref_Number</th>
-                        <th>Merchant</th>
                         <th>Consignee</th>
                         <th>Valuation Fee</th>
                         <th>COD Fee (&#x20B1;)</th>
@@ -30,8 +28,6 @@
                     @foreach($parcels as $parcel) 
                     <tr>
                         <td><p>{{$parcel->item_name}}</p></td>
-                        <td><p>{{$parcel->item_reference_number}}</p></td>
-                        <td><p>{{$parcel->merchantname}}</p></td>
                         <td><p>{{$parcel->item_consignee_fullname}}</p></td>
                         <td><p>&#x20B1; {{$parcel->item_valuation_fee}}</p></td>
                         <td><p>&#x20B1; {{$parcel->item_cod_ammount}}</p></td>

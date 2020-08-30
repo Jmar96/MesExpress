@@ -30,7 +30,10 @@
             <div class="card">
                 <div class="card-header">{{ __('PRINT PARCEL DETAILS') }}</div>
                 <div class="card-body">
+                    <div class="printbarcodelogoright">
+                    <a href="/parceltracker/"  class="btn btn-primary">Back</a>
                     <button class="btn btn-warning" onclick={window.print()}>PRINT</button>
+                    </div>
                     @method('patch')
                     <div class='section-to-print' id='section-to-print'>
                         <div class="printbarcodedetails">

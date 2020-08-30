@@ -9,10 +9,8 @@
                 <div class="card-header">{{ __('Parcel Details') }}</div>
                 <div class="card-body">
                     <x-alert>
-                    <hr>
                         <h3>System message:</h3>
                     </x-alert> 
-                    <hr>
                     @method('patch')
                     <h4>Parcel information</h4>
                         <div class="form-group row">
@@ -30,13 +28,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="item_price" class="col-md-4 col-form-label text-md-right">Price Value (&#x20B1;):</label>
-
-                            <div class="col-md-6">
-                                <input id="item_price" type="number" step="0.01" class="form-control" name="item_price" placeholder="Pesos" value="{{$parcel->item_price}}" disabled>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="item_weight" class="col-md-4 col-form-label text-md-right">Weight (Kg):</label>
 
                             <div class="col-md-6">
@@ -51,13 +42,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="item_cod_ammount" class="col-md-4 col-form-label text-md-right">COD Ammount (&#x20B1;):</label>
-
-                            <div class="col-md-6">
-                                <input id="item_cod_ammount" type="number" step="0.01" class="form-control" name="item_cod_ammount" value="{{$parcel->item_cod_ammount}}" placeholder="Pesos" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="item_shipping_type" class="col-md-4 col-form-label text-md-right">Shipping Type:</label>
 
                             <div class="col-md-6">
@@ -65,7 +49,7 @@
                             </div>
                         </div>
                         <hr>
-                        <h4>Consignee information</h4>
+                    <h4>Consignee information</h4>
                         <div class="form-group row">
                             <label for="item_consignee_fullname" class="col-md-4 col-form-label text-md-right">Consignee Fullname:</label>
 
@@ -125,12 +109,34 @@
                             </div>
                         </div>
                         <hr>
-                        <h4>Total Deductions</h4>
+                    <h4>Computation</h4>
                         <div class="form-group row">
-                            <label for="item_price_deduction" class="col-md-4 col-form-label text-md-right">Total (&#x20B1;):</label>
+                            <label for="item_price" class="col-md-4 col-form-label text-md-right">Price Value (&#x20B1;):</label>
+
+                            <div class="col-md-6">
+                                <input id="item_price" type="number" step="0.01" class="form-control" name="item_price" placeholder="Pesos" value="{{$parcel->item_price}}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="item_cod_ammount" class="col-md-4 col-form-label text-md-right">COD Ammount (&#x20B1;):</label>
+
+                            <div class="col-md-6">
+                                <input id="item_cod_ammount" type="number" step="0.01" class="form-control" name="item_cod_ammount" value="{{$parcel->item_cod_ammount}}" placeholder="Pesos" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="item_price_deduction" class="col-md-4 col-form-label text-md-right">Deduction (&#x20B1;):</label>
 
                             <div class="col-md-6">
                                 <input id="item_price_deduction" type="text" class="form-control" name="item_price_deduction" placeholder="Pesos" value="{{number_format($parcel->item_price * 0.01)}}" disabled>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="item_price_deduction" class="col-md-4 col-form-label text-md-right">Total Payment (&#x20B1;):</label>
+
+                            <div class="col-md-6">
+                                <input id="item_cod_ammount" type="number" step="0.01" class="form-control" name="item_cod_ammount" value="{{$parcel->item_total_payment}}" placeholder="Pesos" readonly>
                             </div>
                         </div>
                 </div>
