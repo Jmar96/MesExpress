@@ -15,10 +15,9 @@
                     <thead>
                     <tr>
                         <th>Parcel</th>
+                        <th>Total Amount (&#x20B1;)</th>
                         <th>Consignee</th>
-                        <th>Valuation Fee</th>
-                        <th>COD Fee (&#x20B1;)</th>
-                        <th>Total</th>
+                        <th>Address</th>
                         <th>Rider</th>
                         <th>Status</th>
                         <th></th>
@@ -28,10 +27,9 @@
                     @foreach($parcels as $parcel) 
                     <tr>
                         <td><p>{{$parcel->item_name}}</p></td>
-                        <td><p>{{$parcel->item_consignee_fullname}}</p></td>
-                        <td><p>&#x20B1; {{$parcel->item_valuation_fee}}</p></td>
-                        <td><p>&#x20B1; {{$parcel->item_cod_ammount}}</p></td>
                         <td><p>&#x20B1; {{$parcel->item_total_payment}}</p></td>
+                        <td><p>{{$parcel->item_consignee_fullname}}</p></td>
+                        <td><p>{{$parcel->item_consignee_address}}</p></td>
                         <td>
                             <select name="item_rider" id="iRider" onchange="parcelRider(this)">
                                 <option value="" selected disabled>{{$parcel->ridername}}</option>
@@ -50,8 +48,8 @@
                             </select>
                         </td>
                         <td>
-                            <a href="{{'/parceltracker/'.$parcel->id.'/edit'}}" class="jlink01" title="EDIT">Details</a>|
-                            <a href="{{'/parceltracker/showHist/'.$parcel->id}}" class="jlink01" title="SHOW HISTORY">History</a>|
+                            <a href="{{'/parceltracker/'.$parcel->id.'/edit'}}" class="jlink01" title="EDIT">Details</a> |
+                            <a href="{{'/parceltracker/showHist/'.$parcel->id}}" class="jlink01" title="SHOW HISTORY">History</a> |
                             <a href="{{'/parceltracker/'.$parcel->id.'/print01'}}" class="jlink01" title="PRINT">Print</a>
                         </td>
                         <!-- <td>
