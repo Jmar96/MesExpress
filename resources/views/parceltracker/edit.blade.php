@@ -59,7 +59,7 @@
                             <div class="col-md-6">
                                 <select name="item_payment_method" id="item_PayMethd" class="form-control" onchange="showCODAmmountBox(this)">
                                     <option value="{{$parcel->item_payment_method}}" selected disabled>{{$parcel->item_payment_method}}</option>
-                                    <option value="COD-Cash on Deliver" selected>Cash on Deliver</option>
+                                    <option value="COD-Cash on Deliver" >Cash on Deliver</option>
                                     <option value="NCOD-Non-Cash on Deliver" >Non-Cash on Deliver</option>
                                 </select>
                             </div>
