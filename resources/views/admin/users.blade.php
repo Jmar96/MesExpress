@@ -185,7 +185,7 @@ function userTypeChange(selectObject){
     var value = selectObject.value.split("-");
     var userID = value[0];
     var typesID = value[1];
-    alert("userID:"+userID+"| type:"+typesID);
+    // alert("userID:"+userID+"| type:"+typesID);
     // /*
     $.ajax({
         url: "/updateUserType",
