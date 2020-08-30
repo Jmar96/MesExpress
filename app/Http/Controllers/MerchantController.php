@@ -76,11 +76,24 @@ class MerchantController extends Controller
 
         ParcelTracker::where('item_status_id', NULL)->update(['item_status_id' => 1]);
         
+        
         return redirect()->back()->with('success','Created Successfully!');
     }
     public function details(ParcelTracker $parcel){
         
         return view('merchant.details',compact('parcel'));
+    }
+    public function showHist($id){
+        // dd($id);
+        $phistories = ParcelHistory::select('parcel_histories.*','parcel_trackers.item_name','parcel_status_lists.item_status','parcel_status_lists.item_status_description')
+        ->leftJoin('parcel_trackers','parcel_histories.parcel_id','=','parcel_trackers.id')
+        ->leftJoin('parcel_status_lists','parcel_histories.status_id','=','parcel_status_lists.id')
+        //->where([['parcel_histories.merchant_id', Auth::id()],['parcel_histories.parcel_id', '=', $id]])
+        ->where('parcel_histories.parcel_id', '=', $id)
+        ->orderBy('id','desc')->get();
+
+        return view('merchant.showHist', compact('phistories'));
+        
     }
     
     //unique random number for parcel ref no

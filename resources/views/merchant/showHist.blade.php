@@ -1,4 +1,4 @@
-@extends('layouts.layout02')
+@extends('layouts.layout01')
 
 @section('content')
 
@@ -127,7 +127,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Parcel History') }}</div>
                 <div class="card-body">
-                <a href="/parceltracker/"  class="btn btn-primary">Go back...</a>
+                <a href="/merchant_parcels"  class="btn btn-primary">Back</a>
                     <hr>
                     <div class="table-wrapper">
                         <table class="fl-table">
@@ -139,7 +139,7 @@
                                 <th>TimeStamps</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody>         
                             @foreach($phistories as $phistory)
                             <tr>
                                 <td><p>{{$phistory->item_name}}</p></td>

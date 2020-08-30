@@ -35,7 +35,8 @@
                         <td><p>&#x20B1; {{$parcel->item_total_payment}}</p></td>
                         <td><p>{{$parcel->item_status}}</p></td>
                         <td>
-                            <a href="{{'/merchantparcel/'.$parcel->id.'/details'}}" class="jlink01" title="View details">Details</a>
+                            <a href="{{'/merchantparcel/'.$parcel->id.'/details'}}" class="jlink01" title="View details">Details</a>|
+                            <a href="{{'/merchant/showHist/'.$parcel->id}}" class="jlink01" title="SHOW HISTORY">History</a>
                         </td>
                     </tr>             
                     @endforeach

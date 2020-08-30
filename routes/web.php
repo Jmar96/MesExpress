@@ -48,6 +48,8 @@ Route::get('/merchant_parcels', 'MerchantController@parcels')->name('merchant.pa
 Route::get('/merchant/create', 'MerchantController@create');
 Route::post('/merchant/create', 'MerchantController@store');
 Route::get('/merchantparcel/{parcel}/details', 'MerchantController@details');
+
+Route::get('/merchant/showHist/{id}','MerchantController@showHist');
 });
 ////////rider//////////
 Route::group(['middleware' => 'App\Http\Middleware\RiderMiddleware'], function()
