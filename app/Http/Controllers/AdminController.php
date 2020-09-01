@@ -64,7 +64,7 @@ class AdminController extends Controller
     }
     
     public function users(){
-        $users = User::where('id', '!=' ,Auth::id())
+        $users = User::where('id', '!=' ,1)
         ->orderBy('id')->get();
 
         return view('admin.users', compact('users'));
